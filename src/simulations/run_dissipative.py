@@ -1,3 +1,5 @@
+import numpy as np
+
 from src.core.dissipative_system import (
     euler_arnold_dissipative
 )
@@ -11,10 +13,7 @@ from src.core.parameters import (
     xi0,
     h_case1,
     h_case2,
-    gamma,
-    t_span,
-    t_eval,
-    cut
+    gamma
 )
 
 from src.core.solver import solve_system
@@ -29,6 +28,14 @@ from src.analysis.energy_analysis import (
 )
 
 
+# Dissipative simulation settings
+t_span = (0, 1000)
+
+t_eval = np.linspace(0, 1000, 20000)
+
+cut = 2000
+
+
 def solve_dissipative(xi_init, h):
 
     return solve_system(
@@ -40,6 +47,7 @@ def solve_dissipative(xi_init, h):
     )
 
 
+# Solve systems
 sol1 = solve_dissipative(
     xi0,
     h_case1
@@ -51,6 +59,7 @@ sol2 = solve_dissipative(
 )
 
 
+# Phase-space comparison
 compare_phase_space(
     sol1,
     sol2,
@@ -58,6 +67,7 @@ compare_phase_space(
 )
 
 
+# Energy analysis
 t = sol2.t
 
 E_modes = mode_energy(sol2)
