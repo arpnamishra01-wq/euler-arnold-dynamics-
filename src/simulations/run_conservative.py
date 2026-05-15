@@ -1,3 +1,5 @@
+import numpy as np
+
 from src.core.system import (
     euler_arnold,
     mode_energy,
@@ -7,10 +9,7 @@ from src.core.system import (
 from src.core.parameters import (
     xi0,
     h_case1,
-    h_case2,
-    t_span,
-    t_eval,
-    cut
+    h_case2
 )
 
 from src.core.solver import solve_system
@@ -23,6 +22,14 @@ from src.analysis.energy_analysis import (
     plot_mode_energies,
     plot_total_energy
 )
+
+
+# Conservative simulation settings
+t_span = (0, 500)
+
+t_eval = np.linspace(0, 500, 50000)
+
+cut = 3000
 
 
 # Solve systems
