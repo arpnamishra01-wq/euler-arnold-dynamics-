@@ -37,8 +37,3 @@ h_case2 = [
 gamma = [0.01]*6
 
 
-t_span = (0, 500)
-
-t_eval = np.linspace(0, 500, 50000)
-
-cut = 3000
